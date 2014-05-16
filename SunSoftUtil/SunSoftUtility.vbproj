@@ -60,6 +60,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileSystem.vb" />
     <Compile Include="MyByte.vb" />
     <Compile Include="JScript.vb" />
     <Compile Include="MultiThread.vb" />

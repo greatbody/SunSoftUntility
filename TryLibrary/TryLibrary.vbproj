@@ -90,6 +90,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -107,6 +110,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SunSoftUtil\SunSoftUtility.vbproj">
+      <Project>{A09B803F-CA2F-4B58-8345-B5D13A9B4A82}</Project>
+      <Name>SunSoftUtility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
