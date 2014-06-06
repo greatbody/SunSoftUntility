@@ -191,4 +191,17 @@ Public Class TextProcessing
         End If
         Return tmpByte
     End Function
+    ''' <summary>
+    ''' 将一个字符串重复n遍
+    ''' </summary>
+    ''' <param name="Source">字符串</param>
+    ''' <param name="Times">重复次数</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function RepeatString(ByVal Source As String, ByVal Times As Integer)
+        Dim jStr As StringBuilder
+        jStr = New StringBuilder("")
+        jStr.Insert(0, Source, Times)
+        Return jStr.ToString
+    End Function
 End Class
