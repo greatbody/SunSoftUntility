@@ -61,6 +61,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyXmlHttp.vb" />
     <Compile Include="SimpleDraw.vb" />
     <Compile Include="FileSystem.vb" />
     <Compile Include="MyByte.vb" />
