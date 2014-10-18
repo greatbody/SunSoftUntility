@@ -1,4 +1,6 @@
-﻿Public Class FileSystem
+﻿Imports System.Windows.Forms
+
+Public Class FileSystem
     Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Integer, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Integer) As Integer
     Sub New()
 
@@ -33,7 +35,7 @@
     ''' </summary>
     ''' <param name="UrlPath"></param>
     ''' <remarks></remarks>
-    Public Shared Sub ExcuteURL(ByVal UrlPath As String) 'ok at 12-09-06[RE]  '【完成：2012-09-06】
+    Public Shared Sub ExcuteUrl(ByVal UrlPath As String) 'ok at 12-09-06[RE]  '【完成：2012-09-06】
         '程序功能：打开文件，且设置文件的父文件夹为其当前运行文件夹路径
         '2012-09-06 改造成为过程
         Dim lngReturn As Long
@@ -46,4 +48,30 @@
             lngReturn = Shell("rundll32.exe   shell32.dll   OpenAs_RunDLL   " & UrlPath)
         End If
     End Sub
+    Public Shared Function SelectFolder(ByVal Describe As String, Optional ByVal ShowNewFolder As Boolean = True) As String
+        Using nOpen As New System.Windows.Forms.FolderBrowserDialog()
+            nOpen.Description = Describe
+            nOpen.ShowNewFolderButton = ShowNewFolder
+            nOpen.ShowDialog()
+            Return nOpen.SelectedPath
+        End Using
+    End Function
+    Public Shared Function SelectFiles(ByVal Describe As String) As String
+        Dim nOpen As New System.Windows.Forms.SaveFileDialog
+        '不检查文件是否存在
+        nOpen.CheckFileExists = False
+        '检查路径是否存在，并提示
+        nOpen.CheckPathExists = True
+        '设置文件选择对话框的标题
+        nOpen.Title = Describe
+        '如果指定不存在的文件，系统提示是否创建
+        nOpen.CreatePrompt = False
+        nOpen.Filter = "All Files(*.*)|*.*"
+        Dim diaResult As DialogResult = nOpen.ShowDialog()
+        If diaResult = DialogResult.OK Then
+            Return nOpen.FileName
+        Else
+            Return Nothing
+        End If
+    End Function
 End Class

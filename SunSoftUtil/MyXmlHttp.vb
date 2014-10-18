@@ -66,16 +66,24 @@ Namespace MyInternet
             Dim ContentStr As String = ""
             Try
                 httpReq.Method = "POST"
-                Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(data)
-                httpReq.GetRequestStream.Write(bs, 0, bs.Length)
+                'httpReq.Timeout = 100
+                If String.IsNullOrEmpty(data) = False Then
+                    Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(data)
+                    httpReq.GetRequestStream.Write(bs, 0, bs.Length)
+                End If
+
                 If myCookie Is Nothing Then
+                Else
                     httpReq.CookieContainer = New CookieContainer
                     httpReq.CookieContainer.Add(myCookie)
                 End If
                 httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
                 rtCharset = httpResp.CharacterSet '获取网页属性体现的charset
+                wsCharset = httpResp.ContentEncoding
                 Dim readers As StreamReader = New StreamReader(httpResp.GetResponseStream, System.Text.Encoding.GetEncoding("UTF-8"))
+                Dim ke As IO.Stream = httpResp.GetResponseStream
                 ContentStr = readers.ReadToEnd
+                wsCharset = RegExp.GetFirstMatch(LCase(ContentStr), "charset=[""0-9a-zA-Z]*")
                 myCookie = httpResp.Cookies
                 readers.Close()
                 httpResp.Close()
@@ -94,11 +102,16 @@ Namespace MyInternet
             Dim ContentStr As String = ""
             Try
                 httpReq.Method = "POST"
+                'httpReq.Timeout = 100
                 httpReq.IfModifiedSince = CDate("1900-09-21")
                 httpReq.Headers.Add("Accept-Charset", "UTF-8")
-                Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(data)
-                httpReq.GetRequestStream.Write(bs, 0, bs.Length)
+                If String.IsNullOrEmpty(data) = False Then
+                    Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(data)
+                    httpReq.GetRequestStream.Write(bs, 0, bs.Length)
+                End If
+
                 If myCookie Is Nothing Then
+                Else
                     httpReq.CookieContainer = New CookieContainer
                     httpReq.CookieContainer.Add(myCookie)
                 End If

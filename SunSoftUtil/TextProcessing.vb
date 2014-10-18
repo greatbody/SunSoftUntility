@@ -12,6 +12,7 @@ Public Class TextProcessing
             If IO.File.Exists(FilePath) = True Then
                 Dim myFileReader As New IO.StreamReader(FilePath, System.Text.Encoding.Default)
                 StringRead = myFileReader.ReadToEnd
+                myFileReader.Close()
                 Return StringRead
             End If
             Return StringRead
@@ -32,7 +33,7 @@ Public Class TextProcessing
             If IO.File.Exists(FilePath) = True Then
                 Dim myFileReader As New IO.StreamReader(FilePath, encoding)
                 StringRead = myFileReader.ReadToEnd
-                myFileReader.Dispose()
+                myFileReader.Close()
                 Return StringRead
             End If
             Return StringRead
@@ -51,7 +52,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, False, System.Text.Encoding.Default)
             myWriter.Write(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -69,7 +70,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, False, encoding)
             myWriter.Write(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -86,7 +87,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, True, System.Text.Encoding.Default)
             myWriter.Write(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -104,7 +105,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, True, encoding)
             myWriter.Write(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -121,7 +122,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, True)
             myWriter.WriteLine(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -139,7 +140,7 @@ Public Class TextProcessing
         Try
             Dim myWriter As New IO.StreamWriter(FilePath, True, encoding)
             myWriter.WriteLine(Content)
-            myWriter.Dispose()
+            myWriter.Close()
             Return True
         Catch ex As Exception
             Return False
@@ -153,6 +154,7 @@ Public Class TextProcessing
                 Dim tmpByte() As Byte
                 ReDim tmpByte(newStr.Length - 1)
                 newStr.Read(tmpByte, 0, newStr.Length)
+                newStr.Close()
                 Return ByteToText(tmpByte)
             Else
                 Return ""
@@ -161,7 +163,12 @@ Public Class TextProcessing
             Return ""
         End Try
     End Function
-
+    ''' <summary>
+    ''' 返回字节数据可能的文字编码类型
+    ''' </summary>
+    ''' <param name="tB">字符的字节数据</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function ReturnEncoding(ByVal tB() As Byte) As System.Text.Encoding
         Dim tB1 As Byte, tB2 As Byte, tB3 As Byte, tB4 As Byte
         If tB.Length < 2 Then Return Nothing
@@ -174,12 +181,22 @@ Public Class TextProcessing
         If (tB1 = &HEF AndAlso tB2 = &HBB AndAlso tB3 = &HBF) Then Return System.Text.Encoding.UTF8
         Return System.Text.Encoding.Default
     End Function
-
+    ''' <summary>
+    ''' 将字节流转换为文本
+    ''' </summary>
+    ''' <param name="mByte">二进制数组</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Shared Function ByteToText(ByVal mByte() As Byte) As String
         Dim tE As System.Text.Encoding = ReturnEncoding(mByte)
         Return tE.GetString(mByte)
     End Function
-
+    ''' <summary>
+    ''' 读取文件到字节数组
+    ''' </summary>
+    ''' <param name="FilePath">文件路径</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Shared Function ReadFileByte(ByVal FilePath As String) As Byte()
         Dim tmpByte() As Byte
         ReDim tmpByte(0)

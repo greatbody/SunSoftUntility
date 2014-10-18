@@ -25,11 +25,13 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnSubmitCookie = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(22, 27)
+        Me.Button1.Location = New System.Drawing.Point(12, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(85, 33)
         Me.Button1.TabIndex = 0
@@ -38,7 +40,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(33, 85)
+        Me.Button2.Location = New System.Drawing.Point(12, 51)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(74, 31)
         Me.Button2.TabIndex = 1
@@ -47,18 +49,38 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(23, 164)
+        Me.Button3.Location = New System.Drawing.Point(12, 88)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(74, 32)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'btnSubmitCookie
+        '
+        Me.btnSubmitCookie.Location = New System.Drawing.Point(12, 126)
+        Me.btnSubmitCookie.Name = "btnSubmitCookie"
+        Me.btnSubmitCookie.Size = New System.Drawing.Size(127, 30)
+        Me.btnSubmitCookie.TabIndex = 3
+        Me.btnSubmitCookie.Text = "测试带Cookie提交"
+        Me.btnSubmitCookie.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(15, 167)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(97, 29)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 262)
+        Me.ClientSize = New System.Drawing.Size(591, 246)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnSubmitCookie)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -70,5 +92,7 @@ Partial Class Form1
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btnSubmitCookie As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class
