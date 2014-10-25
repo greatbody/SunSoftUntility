@@ -30,14 +30,16 @@ Public Class MyWebRequest
         httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
         'cache Cookies
         _cookieCollection = httpResp.Cookies
-        'Annalysic Response
-        'Return GetResponseText(httpResp)
-
-        Return Text.Encoding.UTF8.GetString(GetResponseBytes(httpResp))
-
+        '返回网页源代码
+        Return GetResponseText(httpResp)
     End Function
-
-    Private Function GetResponseBytes(ByRef WebResponse As HttpWebResponse) As Byte()
+    ''' <summary>
+    ''' 返回响应的二进制字节数组
+    ''' </summary>
+    ''' <param name="WebResponse">返回的响应流</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function GetResponseBytes(ByRef WebResponse As HttpWebResponse) As Byte()
         Dim BinStream As Stream
         Dim RespBin() As Byte
         Dim TmpInt As Integer
@@ -79,10 +81,10 @@ Public Class MyWebRequest
     ''' <summary>
     ''' 获取服务器响应的文本
     ''' </summary>
-    ''' <param name="WebResponse"></param>
+    ''' <param name="WebResponse">返回的响应流</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Private Function GetResponseText(ByRef WebResponse As HttpWebResponse) As String
+    Public Function GetResponseText(ByRef WebResponse As HttpWebResponse) As String
         Dim TextStream As StreamReader
         Dim CacheText As String
         Select Case WebResponse.ContentEncoding.ToLower()
