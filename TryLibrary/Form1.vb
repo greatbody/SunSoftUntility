@@ -1,4 +1,5 @@
-﻿Imports SunSoftUtility.MyInternet
+﻿Imports SunSoftUtility
+Imports SunSoftUtility.MyInternet
 
 Public Class Form1
 
@@ -7,7 +8,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        SunSoftUtility.FileSystem.ExcuteURL("E:\快盘\电脑编程\【数据库】图文优秀文章数据库\文章数据库1.0.1.9.exe")
+        SunSoftUtility.FileSystem.ExcuteUrl("E:\快盘\电脑编程\【数据库】图文优秀文章数据库\文章数据库1.0.1.9.exe")
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
@@ -30,5 +31,11 @@ Public Class Form1
         Dim k As New MyXmlHttp("http://www.baidu.com")
         res = k.PostData("")
         Debug.Print(res)
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        Dim r As New MyWebRequest
+        Dim ts As String = r.GetPage("http://www.baidu.com")
+        TextBox1.AppendText(ts)
     End Sub
 End Class
