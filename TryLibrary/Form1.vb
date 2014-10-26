@@ -35,7 +35,7 @@ Public Class Form1
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         Dim r As New MyWebRequest
-        Dim ts As String = r.GetPage("http://www.baidu.com")
+        Dim ts As String = r.GetPage("http://www.vote8.cn/v/polyphoto")
         TextBox1.AppendText(ts)
     End Sub
 End Class

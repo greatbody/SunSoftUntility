@@ -4,12 +4,12 @@ Imports System.IO
 Imports System.IO.Compression
 
 Public Class MyWebRequest
-    Private _cookieContainer As CookieContainer
-    Private _cookieCollection As CookieCollection
+    Public CookieContainer As New CookieContainer
+    Public CookieCollection As New CookieCollection
 
     Public Sub ClearCookie()
-        _cookieCollection = Nothing
-        _cookieContainer = Nothing
+        CookieCollection = New CookieCollection()
+        CookieContainer = New CookieContainer()
     End Sub
 
     Public Function GetPage(ByVal Url As String) As String
@@ -18,7 +18,10 @@ Public Class MyWebRequest
         Dim UriLoc As New Uri(Url)
         'Get Ready
         httpReq = HttpWebRequest.Create(UriLoc)
-        httpReq.CookieContainer = _cookieContainer
+
+        httpReq.CookieContainer = New CookieContainer()
+        httpReq.CookieContainer.Add(CookieCollection)
+
         httpReq.Method = "GET"
         httpReq.Headers.Add("Cache-Control", "max-age=0") ': 
         httpReq.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
@@ -29,7 +32,7 @@ Public Class MyWebRequest
         'Have Response
         httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
         'cache Cookies
-        _cookieCollection = httpResp.Cookies
+        CookieCollection.Add(httpResp.Cookies)
         '返回网页源代码
         Return GetResponseText(httpResp)
     End Function
@@ -102,4 +105,78 @@ Public Class MyWebRequest
         End Select
         Return CacheText
     End Function
+
+    Public Function PostData(ByVal Url As String, ByVal Data As String) As String
+        Dim httpReq As HttpWebRequest
+        Dim httpResp As HttpWebResponse
+        Dim UriLoc As New Uri(Url)
+        'Get Ready
+        httpReq = HttpWebRequest.Create(UriLoc)
+        '
+        httpReq.CookieContainer = New CookieContainer()
+        httpReq.CookieContainer.Add(CookieCollection)
+        '
+        httpReq.Method = "POST"
+        httpReq.Headers.Add("Cache-Control", "max-age=0") ': 
+        httpReq.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        httpReq.Headers.Add("Accept-Encoding", "gzip,deflate")
+        httpReq.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8") 'Accept-Language: zh-CN,zh;q=0.8
+        httpReq.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36 LBBROWSER"
+
+        httpReq.ContentType = "application/x-www-form-urlencoded"
+        httpReq.ContentLength = Text.Encoding.UTF8.GetByteCount(Data)
+
+        httpReq.KeepAlive = True
+        '
+        Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(Data)
+        httpReq.GetRequestStream.Write(bs, 0, bs.Length)
+        'Have Response
+        httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
+        'cache Cookies
+        CookieCollection.Add(httpResp.Cookies)
+        '返回网页源代码
+        Return GetResponseText(httpResp)
+    End Function
+
+    Public Sub DownloadToFile(ByVal Url As String, ByVal FilePath As String)
+        'define data cache
+        Dim webdata() As Byte
+        'define stream
+        Dim WebStream As Stream
+        'define request and response and uri
+        Dim httpReq As HttpWebRequest
+        Dim httpResp As Net.HttpWebResponse
+        Dim Uri As New Uri(Url)
+        'create request
+        httpReq = WebRequest.Create(Uri)
+        'request setting
+        httpReq.Method = "GET"
+        httpReq.KeepAlive = True
+        httpReq.Referer = Url
+        'cookie
+        httpReq.CookieContainer = New CookieContainer()
+        httpReq.CookieContainer.Add(CookieCollection)
+        'send request and get the response
+        Try
+            'send and get response
+            httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
+            'ready to save to file
+            ReDim webdata(httpResp.ContentLength - 1)
+            WebStream = httpResp.GetResponseStream()
+            WebStream.Read(webdata, 0, webdata.Length)
+            WebStream.Close()
+            CookieCollection.Add(httpResp.Cookies)
+            If webdata.Length > 0 Then
+                If IO.File.Exists(FilePath) Then
+                    IO.File.Delete(FilePath)
+                End If
+                Dim file As New IO.FileStream(FilePath, FileMode.Create, FileAccess.Write)
+                file.Write(webdata, 0, webdata.Length)
+                file.Close()
+            End If
+            httpResp.Close()
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

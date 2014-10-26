@@ -29,6 +29,7 @@ Partial Class Form1
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -94,11 +95,21 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(430, 188)
         Me.TextBox1.TabIndex = 6
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(359, 14)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(89, 28)
+        Me.Button6.TabIndex = 7
+        Me.Button6.Text = "测试正则"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(591, 246)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -119,5 +130,6 @@ Partial Class Form1
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Button6 As System.Windows.Forms.Button
 
 End Class
