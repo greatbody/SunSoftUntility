@@ -7,6 +7,16 @@ Public Class MyWebRequest
     Public CookieContainer As New CookieContainer
     Public CookieCollection As New CookieCollection
 
+    Private _isIpFake As Boolean
+    Public Property IsFakeIp() As Boolean
+        Get
+            Return _isIpFake
+        End Get
+        Set(ByVal value As Boolean)
+            _isIpFake = value
+        End Set
+    End Property
+
     Public Sub ClearCookie()
         CookieCollection = New CookieCollection()
         CookieContainer = New CookieContainer()
@@ -28,6 +38,11 @@ Public Class MyWebRequest
         httpReq.Headers.Add("Accept-Encoding", "gzip,deflate")
         httpReq.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8") 'Accept-Language: zh-CN,zh;q=0.8
         httpReq.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36 LBBROWSER"
+
+        If _isIpFake Then
+            httpReq.Headers.Add("x-forward-for", MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString())
+        End If
+
         httpReq.KeepAlive = True
         'Have Response
         httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
@@ -122,7 +137,9 @@ Public Class MyWebRequest
         httpReq.Headers.Add("Accept-Encoding", "gzip,deflate")
         httpReq.Headers.Add("Accept-Language", "zh-CN,zh;q=0.8") 'Accept-Language: zh-CN,zh;q=0.8
         httpReq.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36 LBBROWSER"
-
+        If _isIpFake Then
+            httpReq.Headers.Add("x-forward-for", MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString())
+        End If
         httpReq.ContentType = "application/x-www-form-urlencoded"
         httpReq.ContentLength = Text.Encoding.UTF8.GetByteCount(Data)
 
@@ -131,7 +148,12 @@ Public Class MyWebRequest
         Dim bs() As Byte = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(Data)
         httpReq.GetRequestStream.Write(bs, 0, bs.Length)
         'Have Response
-        httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
+        Try
+            httpResp = CType(httpReq.GetResponse(), HttpWebResponse)
+        Catch ex As Exception
+            Return ""
+        End Try
+
         'cache Cookies
         CookieCollection.Add(httpResp.Cookies)
         '返回网页源代码
@@ -152,6 +174,9 @@ Public Class MyWebRequest
         'request setting
         httpReq.Method = "GET"
         httpReq.KeepAlive = True
+        If _isIpFake Then
+            httpReq.Headers.Add("x-forward-for", MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString() & "." & MyMath.GetRndInt().ToString())
+        End If
         httpReq.Referer = Url
         'cookie
         httpReq.CookieContainer = New CookieContainer()
