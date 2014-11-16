@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyMath.vb" />
+    <Compile Include="MyXml.vb" />
     <Compile Include="MyXmlHttp.vb" />
     <Compile Include="SimpleDraw.vb" />
     <Compile Include="FileSystem.vb" />
