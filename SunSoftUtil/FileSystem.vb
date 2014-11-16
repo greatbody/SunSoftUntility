@@ -56,7 +56,7 @@ Public Class FileSystem
             Return nOpen.SelectedPath
         End Using
     End Function
-    Public Shared Function SelectFiles(ByVal Describe As String) As String
+    Public Shared Function SelectFiles(ByVal Describe As String, ByVal OverWriteCheck As Boolean) As String
         Dim nOpen As New System.Windows.Forms.SaveFileDialog
         '不检查文件是否存在
         nOpen.CheckFileExists = False
@@ -66,6 +66,8 @@ Public Class FileSystem
         nOpen.Title = Describe
         '如果指定不存在的文件，系统提示是否创建
         nOpen.CreatePrompt = False
+        '如果指定的文件存在，是否提示“是否覆盖”
+        nOpen.OverwritePrompt = OverWriteCheck
         nOpen.Filter = "All Files(*.*)|*.*"
         Dim diaResult As DialogResult = nOpen.ShowDialog()
         If diaResult = DialogResult.OK Then
@@ -73,5 +75,11 @@ Public Class FileSystem
         Else
             Return Nothing
         End If
+    End Function
+    Public Shared Function SelectFiles(ByVal Describe As String) As String
+        Return SelectFiles(Describe, False)
+    End Function
+    Public Shared Function AppPath() As String
+        Return Application.StartupPath
     End Function
 End Class
