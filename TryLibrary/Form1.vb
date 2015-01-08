@@ -41,7 +41,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
-        MsgBox(DateDiff("d", New Date(2014, 10, 11), New DateTime(2014, 11, 1)))
+        MsgBox(2 + 8 * 6 / 4 Mod 2)
     End Sub
 
     Public Function AddElement(ByRef oXmlDom As XmlDocument, ByRef oParent As XmlElement, ByVal xmlName As String) As XmlElement
@@ -98,9 +98,15 @@ Public Class Form1
     End Sub
 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
-        Dim i As New MyXml
-        Dim o As New XmlDocument
-        i.CreateByPath(o, "/love/say/me")
-        Dim k As String = o.OuterXml
+        Using tick As New MyTimer
+            tick.InitTimer()
+            tick.StartTimer()
+            Dim i As New MyXml
+            Dim o As New XmlDocument
+            Threading.Thread.Sleep(50)
+            i.CreateByPath(o, "/love/say/me")
+            Dim k As String = o.OuterXml
+            MsgBox(tick.StopAndGet)
+        End Using
     End Sub
 End Class

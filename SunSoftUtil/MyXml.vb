@@ -1,7 +1,6 @@
 ﻿Imports System.Xml
 Imports System.Text
 Imports System.IO
-
 Public Class MyXml
     ''' <summary>
     ''' 
@@ -12,13 +11,15 @@ Public Class MyXml
     ''' <remarks></remarks>
     Public Function GetXml(ByVal strXsltPath As String, ByVal XmlCode As String) As String
         Dim xmlDoc As New XmlDocument
-        Dim xslt As New Xsl.XslTransform
+        Dim xslt As New Xml.Xsl.XslCompiledTransform
+        Dim writer As XmlWriter
+        Dim output As New StringBuilder
+        Dim ms As New MemoryStream
+        writer = XmlWriter.Create(output)
         xmlDoc.LoadXml(XmlCode)
         xslt.Load(strXsltPath)
-        Dim output As New StringBuilder("")
-        Dim writer As New StringWriter(output)
         xslt.Transform(xmlDoc, Nothing, writer, Nothing)
-        Return output.ToString
+        Return(output.ToString)
     End Function
     ''' <summary>
     ''' 为XmlDom添加元素
