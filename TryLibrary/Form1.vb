@@ -3,7 +3,7 @@ Imports SunSoftUtility.MyInternet
 Imports System.Xml
 
 Public Class Form1
-
+    Private _hotkey As New RegHotKey
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         SunSoftUtility.FileSystem.LocateObject("E:\GitCode\SunSoftLibrary\TryLibrary\TryLibrary.sln")
     End Sub
@@ -108,5 +108,23 @@ Public Class Form1
             Dim k As String = o.OuterXml
             MsgBox(tick.StopAndGet)
         End Using
+    End Sub
+
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
+
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Me.Show()
+        _hotkey.Regist(Me.Handle, RegHotKey.HotkeyModifiers.Alt, Keys.K, AddressOf Stt)
+    End Sub
+
+    Public Sub Stt()
+        MessageBox.Show("show")
+    End Sub
+
+    Protected Overrides Sub WndProc(ByRef m As Message)
+        _hotkey.ProcessHotKey(m)
+        MyBase.WndProc(m)
     End Sub
 End Class

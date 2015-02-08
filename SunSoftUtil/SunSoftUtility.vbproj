@@ -61,10 +61,14 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbHelper\OledbHelper.vb" />
+    <Compile Include="DbHelper\QueryParameter.vb" />
+    <Compile Include="DbHelper\SqlDbHelper.vb" />
     <Compile Include="MyMath.vb" />
     <Compile Include="MyTimer.vb" />
     <Compile Include="MyXml.vb" />
     <Compile Include="MyXmlHttp.vb" />
+    <Compile Include="RegHotKey.vb" />
     <Compile Include="SimpleDraw.vb" />
     <Compile Include="FileSystem.vb" />
     <Compile Include="MyByte.vb" />
@@ -109,6 +113,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
