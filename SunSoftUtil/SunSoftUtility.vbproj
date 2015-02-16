@@ -69,6 +69,7 @@
     <Compile Include="MyXml.vb" />
     <Compile Include="MyXmlHttp.vb" />
     <Compile Include="RegHotKey.vb" />
+    <Compile Include="SerializeHelper.vb" />
     <Compile Include="SimpleDraw.vb" />
     <Compile Include="FileSystem.vb" />
     <Compile Include="MyByte.vb" />
