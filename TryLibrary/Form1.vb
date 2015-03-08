@@ -1,4 +1,5 @@
-﻿Imports SunSoftUtility
+﻿Imports SunSoftUtility.DbHelper
+Imports SunSoftUtility
 Imports SunSoftUtility.MyInternet
 Imports System.Xml
 
@@ -36,7 +37,7 @@ Public Class Form1
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         Dim r As New MyWebRequest
-        Dim ts As String = r.GetPage("http://www.vote8.cn/v/polyphoto")
+        Dim ts As String = r.GetPage("http://localhost:8002/ht_main.htm")
         TextBox1.AppendText(ts)
     End Sub
 
@@ -126,5 +127,23 @@ Public Class Form1
     Protected Overrides Sub WndProc(ByRef m As Message)
         _hotkey.ProcessHotKey(m)
         MyBase.WndProc(m)
+    End Sub
+
+    Private Sub Button11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button11.Click
+        While True
+            Threading.Thread.SpinWait(2000)
+            MsgBox(1)
+            'Threading.SpinWait.SpinUntil(Function() False, 2000)
+        End While
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        TextBox1.Text = RegExp.GetFirstMatch("123456", "\d{3}")
+    End Sub
+
+    Private Sub btnsqlite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnsqlite.Click
+        SqliteDbHelper.SetUnsafeConnString("Data Source=E:\CsdnCode\WebSiteGroup\MyWage\WageCode.db")
+        Dim ks As DataTable = SqliteDbHelper.From("select * from Student").FillDataTable()
+        Console.WriteLine("number of :" & ks.Rows.Count)
     End Sub
 End Class

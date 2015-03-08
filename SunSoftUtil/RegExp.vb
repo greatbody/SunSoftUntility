@@ -1,7 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
 Public Class RegExp
-    Inherits System.Text.RegularExpressions.Regex
-    Private _regPre As System.Text.RegularExpressions.Regex
+    Inherits Text.RegularExpressions.Regex
+    Private _regPre As Text.RegularExpressions.Regex
     Private _regStr As String = ""
     Public Property RegString() As String
         Get
@@ -13,7 +13,7 @@ Public Class RegExp
     End Property
 
     Public Sub New()
-        _regPre = New System.Text.RegularExpressions.Regex
+        _regPre = New Text.RegularExpressions.Regex
     End Sub
     Public Sub New(ByVal regExpression As String)
         _regPre = New Regex(regExpression)
@@ -23,30 +23,30 @@ Public Class RegExp
 
     'End Function
     Public Shared Function GetMatches(ByVal strData As String, ByVal strRegExp As String) As String()
-        Dim TmpRegEx As New Regex(strRegExp)
-        Dim TmpCollect As MatchCollection = TmpRegEx.Matches(strData)
-        Dim TmpMatch As Match
+        Dim tmpRegEx As New Regex(strRegExp)
+        Dim tmpCollect As MatchCollection = tmpRegEx.Matches(strData)
+        Dim tmpMatch As Match
         Dim iRet() As String
         Dim iCount As Integer = 0
-        If TmpCollect.Count > 0 Then
-            ReDim iRet(TmpCollect.Count - 1)
+        If tmpCollect.Count > 0 Then
+            ReDim iRet(tmpCollect.Count - 1)
         Else
             ReDim iRet(0)
             iRet(0) = ""
             Return iRet
         End If
-        For Each TmpMatch In TmpCollect
-            iRet(iCount) = TmpMatch.Value
+        For Each tmpMatch In tmpCollect
+            iRet(iCount) = tmpMatch.Value
             iCount += 1
         Next
         Return iRet
     End Function
     Public Shared Function GetFirstMatch(ByVal strData As String, ByVal strRegExp As String) As String
-        Dim TmpRegEx As New Regex(strRegExp)
-        Dim TmpCollect As MatchCollection = TmpRegEx.Matches(strData)
-        If TmpCollect.Count <= 0 Then
+        Dim tmpRegEx As New Regex(strRegExp)
+        Dim tmpCollect As MatchCollection = tmpRegEx.Matches(strData)
+        If tmpCollect.Count <= 0 Then
             Return ""
         End If
-        Return TmpCollect.Item(0).Value
+        Return tmpCollect.Item(0).Value
     End Function
 End Class

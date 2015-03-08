@@ -34,11 +34,13 @@ Partial Class Form1
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.btnsqlite = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
+        Me.Button1.Location = New System.Drawing.Point(12, 8)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(85, 33)
         Me.Button1.TabIndex = 0
@@ -47,7 +49,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 51)
+        Me.Button2.Location = New System.Drawing.Point(12, 46)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(74, 31)
         Me.Button2.TabIndex = 1
@@ -56,7 +58,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 88)
+        Me.Button3.Location = New System.Drawing.Point(12, 83)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(74, 32)
         Me.Button3.TabIndex = 2
@@ -65,7 +67,7 @@ Partial Class Form1
         '
         'btnSubmitCookie
         '
-        Me.btnSubmitCookie.Location = New System.Drawing.Point(12, 126)
+        Me.btnSubmitCookie.Location = New System.Drawing.Point(12, 121)
         Me.btnSubmitCookie.Name = "btnSubmitCookie"
         Me.btnSubmitCookie.Size = New System.Drawing.Size(127, 30)
         Me.btnSubmitCookie.TabIndex = 3
@@ -74,7 +76,7 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(15, 167)
+        Me.Button4.Location = New System.Drawing.Point(12, 157)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(97, 29)
         Me.Button4.TabIndex = 4
@@ -83,7 +85,7 @@ Partial Class Form1
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(478, 14)
+        Me.Button5.Location = New System.Drawing.Point(292, 9)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(98, 30)
         Me.Button5.TabIndex = 5
@@ -101,7 +103,7 @@ Partial Class Form1
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(359, 14)
+        Me.Button6.Location = New System.Drawing.Point(197, 8)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(89, 28)
         Me.Button6.TabIndex = 7
@@ -110,7 +112,7 @@ Partial Class Form1
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(199, 9)
+        Me.Button7.Location = New System.Drawing.Point(103, 8)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(88, 32)
         Me.Button7.TabIndex = 8
@@ -119,7 +121,7 @@ Partial Class Form1
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(172, 259)
+        Me.Button8.Location = New System.Drawing.Point(157, 246)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(76, 29)
         Me.Button8.TabIndex = 9
@@ -128,7 +130,7 @@ Partial Class Form1
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(276, 251)
+        Me.Button9.Location = New System.Drawing.Point(239, 246)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(94, 36)
         Me.Button9.TabIndex = 10
@@ -137,18 +139,38 @@ Partial Class Form1
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(507, 261)
+        Me.Button10.Location = New System.Drawing.Point(454, 248)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(68, 25)
         Me.Button10.TabIndex = 11
         Me.Button10.Text = "Button10"
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(339, 246)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(109, 29)
+        Me.Button11.TabIndex = 12
+        Me.Button11.Text = "SpainWait测试"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'btnsqlite
+        '
+        Me.btnsqlite.Location = New System.Drawing.Point(10, 218)
+        Me.btnsqlite.Name = "btnsqlite"
+        Me.btnsqlite.Size = New System.Drawing.Size(98, 30)
+        Me.btnsqlite.TabIndex = 13
+        Me.btnsqlite.Text = "Visit Sqlite"
+        Me.btnsqlite.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 306)
+        Me.Controls.Add(Me.btnsqlite)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
@@ -179,5 +201,7 @@ Partial Class Form1
     Friend WithEvents Button8 As System.Windows.Forms.Button
     Friend WithEvents Button9 As System.Windows.Forms.Button
     Friend WithEvents Button10 As System.Windows.Forms.Button
+    Friend WithEvents Button11 As System.Windows.Forms.Button
+    Friend WithEvents btnsqlite As System.Windows.Forms.Button
 
 End Class

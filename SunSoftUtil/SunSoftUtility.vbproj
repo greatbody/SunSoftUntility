@@ -48,6 +48,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>RefBin\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -64,10 +67,11 @@
     <Compile Include="DbHelper\OledbHelper.vb" />
     <Compile Include="DbHelper\QueryParameter.vb" />
     <Compile Include="DbHelper\SqlDbHelper.vb" />
+    <Compile Include="DbHelper\SqliteDbHelper.vb" />
     <Compile Include="MyMath.vb" />
     <Compile Include="MyTimer.vb" />
     <Compile Include="MyXml.vb" />
-    <Compile Include="MyXmlHttp.vb" />
+    <Compile Include="MyInternet\MyXmlHttp.vb" />
     <Compile Include="RegHotKey.vb" />
     <Compile Include="SerializeHelper.vb" />
     <Compile Include="SimpleDraw.vb" />
