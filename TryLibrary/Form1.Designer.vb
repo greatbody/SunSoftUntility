@@ -36,11 +36,14 @@ Partial Class Form1
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.btnsqlite = New System.Windows.Forms.Button()
+        Me.btnMusic = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 8)
+        Me.Button1.Location = New System.Drawing.Point(10, 6)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(85, 33)
         Me.Button1.TabIndex = 0
@@ -49,7 +52,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 46)
+        Me.Button2.Location = New System.Drawing.Point(10, 46)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(74, 31)
         Me.Button2.TabIndex = 1
@@ -58,7 +61,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 83)
+        Me.Button3.Location = New System.Drawing.Point(10, 83)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(74, 32)
         Me.Button3.TabIndex = 2
@@ -67,18 +70,18 @@ Partial Class Form1
         '
         'btnSubmitCookie
         '
-        Me.btnSubmitCookie.Location = New System.Drawing.Point(12, 121)
+        Me.btnSubmitCookie.Location = New System.Drawing.Point(10, 121)
         Me.btnSubmitCookie.Name = "btnSubmitCookie"
-        Me.btnSubmitCookie.Size = New System.Drawing.Size(127, 30)
+        Me.btnSubmitCookie.Size = New System.Drawing.Size(112, 30)
         Me.btnSubmitCookie.TabIndex = 3
         Me.btnSubmitCookie.Text = "测试带Cookie提交"
         Me.btnSubmitCookie.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(12, 157)
+        Me.Button4.Location = New System.Drawing.Point(10, 157)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(97, 29)
+        Me.Button4.Size = New System.Drawing.Size(61, 29)
         Me.Button4.TabIndex = 4
         Me.Button4.Text = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
@@ -94,7 +97,7 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(157, 52)
+        Me.TextBox1.Location = New System.Drawing.Point(128, 46)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -121,7 +124,7 @@ Partial Class Form1
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(157, 246)
+        Me.Button8.Location = New System.Drawing.Point(10, 228)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(76, 29)
         Me.Button8.TabIndex = 9
@@ -130,16 +133,16 @@ Partial Class Form1
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(239, 246)
+        Me.Button9.Location = New System.Drawing.Point(10, 263)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(94, 36)
+        Me.Button9.Size = New System.Drawing.Size(94, 29)
         Me.Button9.TabIndex = 10
         Me.Button9.Text = "test"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(454, 248)
+        Me.Button10.Location = New System.Drawing.Point(128, 279)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(68, 25)
         Me.Button10.TabIndex = 11
@@ -148,7 +151,7 @@ Partial Class Form1
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(339, 246)
+        Me.Button11.Location = New System.Drawing.Point(128, 244)
         Me.Button11.Name = "Button11"
         Me.Button11.Size = New System.Drawing.Size(109, 29)
         Me.Button11.TabIndex = 12
@@ -157,18 +160,48 @@ Partial Class Form1
         '
         'btnsqlite
         '
-        Me.btnsqlite.Location = New System.Drawing.Point(10, 218)
+        Me.btnsqlite.Location = New System.Drawing.Point(10, 192)
         Me.btnsqlite.Name = "btnsqlite"
-        Me.btnsqlite.Size = New System.Drawing.Size(98, 30)
+        Me.btnsqlite.Size = New System.Drawing.Size(85, 30)
         Me.btnsqlite.TabIndex = 13
         Me.btnsqlite.Text = "Visit Sqlite"
         Me.btnsqlite.UseVisualStyleBackColor = True
+        '
+        'btnMusic
+        '
+        Me.btnMusic.Location = New System.Drawing.Point(243, 240)
+        Me.btnMusic.Name = "btnMusic"
+        Me.btnMusic.Size = New System.Drawing.Size(95, 29)
+        Me.btnMusic.TabIndex = 14
+        Me.btnMusic.Text = "TryPlayMusic"
+        Me.btnMusic.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(344, 241)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(73, 27)
+        Me.Button12.TabIndex = 15
+        Me.Button12.Text = "TryPause"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(292, 275)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(92, 26)
+        Me.Button13.TabIndex = 16
+        Me.Button13.Text = "Button13"
+        Me.Button13.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 306)
+        Me.Controls.Add(Me.Button13)
+        Me.Controls.Add(Me.Button12)
+        Me.Controls.Add(Me.btnMusic)
         Me.Controls.Add(Me.btnsqlite)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button10)
@@ -203,5 +236,8 @@ Partial Class Form1
     Friend WithEvents Button10 As System.Windows.Forms.Button
     Friend WithEvents Button11 As System.Windows.Forms.Button
     Friend WithEvents btnsqlite As System.Windows.Forms.Button
+    Friend WithEvents btnMusic As System.Windows.Forms.Button
+    Friend WithEvents Button12 As System.Windows.Forms.Button
+    Friend WithEvents Button13 As System.Windows.Forms.Button
 
 End Class

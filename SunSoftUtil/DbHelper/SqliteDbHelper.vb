@@ -52,10 +52,10 @@ Namespace DbHelper
 
         Public Function Create(ByVal connString As String)
             '返回一个对象自身
-            Return New SqlDbHelper(connString)
+            Return New SqliteDbHelper(connString)
         End Function
-        Public Shared Function Create() As SqlDbHelper
-            Return New SqlDbHelper()
+        Public Shared Function Create() As SqliteDbHelper
+            Return New SqliteDbHelper()
         End Function
 
         Public Function ExcuteNonQuery() As Integer

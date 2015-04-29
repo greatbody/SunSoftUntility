@@ -146,4 +146,18 @@ Public Class Form1
         Dim ks As DataTable = SqliteDbHelper.From("select * from Student").FillDataTable()
         Console.WriteLine("number of :" & ks.Rows.Count)
     End Sub
+    ReadOnly _play As New Audio("D:\音频\Michael Jackson\ToCell\Bad.mp3")
+    ReadOnly _play2 As New Audio("D:\音频\Michael Jackson\MJ-Love's Gone Bad.mp3")
+    Private Sub btnMusic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnMusic.Click
+        _play.MoveTo("04:00.55")
+        _play.Play()
+    End Sub
+
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+        _play.Pause()
+    End Sub
+
+    Private Sub Button13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button13.Click
+        MsgBox(_play.LengthString)
+    End Sub
 End Class
